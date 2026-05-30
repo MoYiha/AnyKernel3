@@ -36,14 +36,17 @@ no_magisk_check=1
 # GKI check
 kernel_version=$(cat /proc/version | awk -F '-' '{print $1}' | awk '{print $3}')
 case $kernel_version in
-    5.1*) ksu_supported=true ;;
+    5.10*) ksu_supported=true ;;
+    5.15*) ksu_supported=true ;;
     6.1*) ksu_supported=true ;;
     6.6*) ksu_supported=true ;;
+    6.12*) ksu_supported=true ;;
     *) ksu_supported=false ;;
 esac
 
-ui_print " " "  -> Wild Kernels Supported: $ksu_supported"
+ui_print "  -> Wild Kernels Supported: $ksu_supported"
 $ksu_supported || abort "  -> Non-GKI device, abort."
+ui_print " -> Flashing Now... "
 
 # boot install
 split_boot
@@ -56,19 +59,15 @@ else
 fi
 
 ui_print " "
-ui_print "WildKernels Telegram Channel:"
-ui_print "https://t.me/WildKernels"
+ui_print "Wild Kernels Telegram Channel:"
+ui_print "https://t.me/WildKernelsTG"
 ui_print " "
-ui_print "WildKernels Website:"
+ui_print "Wild Kernels Website: (W.I.P.)"
 ui_print "https://wildkernels.dev"
-ui_print " "
-ui_print "Wild_KSU GitHub Repository:"
-ui_print "https://github.com/WildKernels/Wild_KSU"
-ui_print "KernelSU-Next fork focused on customization and root-hiding features!"
 ui_print " "
 ui_print "GKI_KernelSU_SUSFS GitHub Repository:"
 ui_print "https://github.com/WildKernels/GKI_KernelSU_SUSFS"
-ui_print "GKI kernels with KernelSU and SUSFS."
+ui_print "GKI2 kernels with KernelSU and SUSFS."
 ui_print " "
 ui_print "OnePlus_KernelSU_SUSFS GitHub Repository:"
 ui_print "https://github.com/WildKernels/OnePlus_KernelSU_SUSFS"
